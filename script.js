@@ -3,6 +3,7 @@ let modalQt = 1
 const c = (el) => document.querySelector(el)
 const cs = (el) => document.querySelectorAll(el)
 
+// Listagem das Pizzas
 pizzaJson.map((item, index) => {
     let pizzaItem = c('.models .pizza-item').cloneNode(true)     //preencher as informações em pizzaitem
         
@@ -39,4 +40,15 @@ pizzaJson.map((item, index) => {
     })
 
     c('.pizza-area').append( pizzaItem )
+})
+
+// Eventos do modal
+function closeModal() {
+    c('.pizzaWindowArea').style.opacity = 0
+    setTimeout(()=>{
+        c('.pizzaWindowArea').style.display = 'none'
+    }, 500)
+}
+cs('.pizzaInfo--cancelButton, .pizzaInfo--cancelMobileButton').forEach((item)=>{
+    item.addEventListener('click', closeModal)
 })
